@@ -10,12 +10,12 @@ for(let i=0; i < 16; i++){
    newDiv.addEventListener('mouseover', e => {
     switch (mode) {
       case "color" :
-        e.target.style.backgroundColor = '#111111';
+        e.target.style.backgroundColor = '#525252';
         console.log(e.target.style.backgroundColor);
         break;
       
       case "rgb" :
-        console.log("rgb good");
+        e.target.style.backgroundColor = randomColor();
         break;
 
       case "darken" :
@@ -41,3 +41,15 @@ document.querySelector('#options').addEventListener('click', e => {
     console.log(mode);
   }
 });
+
+/**
+ * Generates a random color 0-255 for each rgb value
+ */
+function randomColor() {
+  let color = "#";
+  const characters = '0123456789ABCDEF';
+  for(let i = 0; i < 6; i ++) {
+    color += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+  return color;
+}
