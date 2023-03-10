@@ -5,12 +5,13 @@ let mode = "color";
 let toAdd = document.createDocumentFragment();
 for(let i=0; i < 16; i++){
   let newDiv = document.createElement('div');
-   newDiv.id = "box"+i;
-   newDiv.className = "grid"
-   newDiv.addEventListener('mouseover', e => {
+  newDiv.style.backgroundColor = 'rgb(255, 255, 255';
+  newDiv.id = "box"+i;
+  newDiv.className = "grid"
+  newDiv.addEventListener('mouseover', e => {
     switch (mode) {
       case "color" :
-        e.target.style.backgroundColor = '#525252';
+        e.target.style.backgroundColor = 'rgb(82, 82, 82)';
         console.log(e.target.style.backgroundColor);
         break;
       
@@ -19,7 +20,7 @@ for(let i=0; i < 16; i++){
         break;
 
       case "darken" :
-        console.log("darken good");
+        e.target.style.backgroundColor = darkenColor(...e.target.style.backgroundColor.match(/\d+/g))
         break;
 
       default:
@@ -52,4 +53,14 @@ function randomColor() {
     color += characters.charAt(Math.floor(Math.random() * characters.length));
   }
   return color;
+}
+
+/**
+ * @param {Number} r - Red value of color
+ * @param {Number} g - Green value of color
+ * @param {Number} b - Blue value of color
+ * @returns Value of darkened color provided
+ */
+function darkenColor(r, g, b) {
+  return 'rgb(' + r*0.8 + ', ' + g*0.8 + ', ' + b*0.8 + ')';
 }
