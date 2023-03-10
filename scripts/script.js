@@ -12,7 +12,6 @@ for(let i=0; i < 16; i++){
     switch (mode) {
       case "color" :
         e.target.style.backgroundColor = 'rgb(82, 82, 82)';
-        console.log(e.target.style.backgroundColor);
         break;
       
       case "rgb" :
@@ -39,7 +38,6 @@ document.querySelector('#options').addEventListener('click', e => {
 
   } else {
     mode = e.target.id;
-    console.log(mode);
   }
 });
 
